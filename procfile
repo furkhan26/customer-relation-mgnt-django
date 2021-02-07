@@ -1,0 +1,1 @@
+web: guicorn crm1.wsgi --log-file
