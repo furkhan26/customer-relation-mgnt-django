@@ -2,33 +2,33 @@
 {% block content %}
 	<br>
 <div class="row">
-	<div class="col-md">
-		<div class="card card-body">
-			<h5>Customer:</h5>
-			<hr>
+	<div class="col-md ">
+		<div class="card card-body bg-dark">
+			<h5 class="text-white">Customer:</h5>
+			<hr class="bg-white">
 			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
 			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Place new order</a>
 		</div>
 	</div>
 	<div class="col-md">
-		<div class="card card-body">
-			<h5>Contact Information</h5>
-			<hr>
-			<p>Email: {{customer.email}} </p>
-			<p>Phone: {{customer.phone}} </p>
+		<div class="card card-body bg-dark">
+			<h5 class="text-white">Contact Information</h5>
+			<hr class="bg-white">
+			<p class="text-white">Email: {{customer.email}} </p>
+			<p class="text-white">Phone: {{customer.phone}} </p>
 		</div>
 	</div>
 	<div class="col-md">
-		<div class="card card-body">
-			<h5>Total Orders</h5>
-			<hr>
-			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		<div class="card card-body bg-dark">
+			<h5 class="text-white">Total Orders</h5>
+			<hr class="bg-white">
+			<h1 class="text-white" style="text-align: center;padding: 10px">{{order_count}}</h1>
 		</div>
 	</div>
 </div>
 <br>
 
-<div class="row">
+<div class="container col-10">
     <div class="col">
 		<div class="card card-body">
 			<form method="get">
@@ -42,11 +42,12 @@
 </div>
 <br>
 
-<div class="row">
+<div class="container col-10">
 	<div class="col-md">
 		<div class="card card-body">
 			<table class="table table-sm">
-				<tr>
+				<tr style="background-color: cadetblue;">
+					<th>Sno</th>
 					<th>Product</th>
 					<th>Note</th>
 					<th>Date Orderd</th>
@@ -56,6 +57,7 @@
 				</tr>
 				{%for order in orders%}
 				<tr>
+					<th>{{forloop.counter}}</th>
 				  <td>{{order.product}}</td>
 				  <td>{{order.note}}</td>
 				  <td>{{order.date_created}}</td>
