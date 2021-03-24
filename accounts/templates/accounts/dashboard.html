@@ -1,13 +1,15 @@
 {%  extends 'accounts/main.html' %}
 {% block content %}
 {%  include 'accounts/status.html' %}
+<style>
+</style>
 <br>
 <div class="row">
 	<div class="col-md-5">
 		<h5>CUSTOMERS:</h5>
 		<hr>
 		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
+			<a class="btn btn-warning  " href="">Create Customer</a>
 			<table class="table table-sm mt-5">
 				<tr>
 				<th></th>
@@ -26,27 +28,31 @@
 		</div>
 	</div>
 	<div class="col-md-7">
-		<h5>LAST 5 ORDERS</h5>
+		<h5>LAST 10 ORDERS</h5>
 		<hr>
-		<div class="card card-body">
+		<div class="card card-body main-card-height" >
 			
-			<table class="table table-sm ">
-				<tr style="background-color: cadetblue;">
-					<th>Product</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
-				</tr>	
-				{%for order in orders %}
-				<tr>
-				 <td>{{order.product}}</td>
-				 <td>{{order.date_created}}</td>
-				 <td>{{order.status}}</td>
-				 <td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
-				 <td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}" >Remove</a></td>
-				</tr>
-				{% endfor %}
+			<table class="table table-sm table-hover" >
+				<thead>
+					<tr style="background-color: cadetblue;">
+						<th>Product</th>
+						<th>Date Orderd</th>
+						<th>Status</th>
+						<th>Update</th>
+						<th>Remove</th>
+					</tr>	
+				</thead>
+				<tbody>
+					{%for order in orders_for_context %}
+					<tr>
+					<td>{{order.product}}</td>
+					<td>{{order.date_created}}</td>
+					<td>{{order.status}}</td>
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}" >Remove</a></td>
+					</tr>
+					{% endfor %}
+				</tbody>
 			</table>
 		</div>
 	</div>

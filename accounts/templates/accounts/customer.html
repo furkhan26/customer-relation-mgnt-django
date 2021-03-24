@@ -1,17 +1,22 @@
 {%  extends 'accounts/main.html' %}
 {% block content %}
+<style>
+	.main-card{
+		background-color: #4f868c!important;
+	}
+</style>
 	<br>
 <div class="row">
 	<div class="col-md ">
-		<div class="card card-body bg-dark">
+		<div class="card card-body main-card">
 			<h5 class="text-white">Customer:</h5>
-			<hr class="bg-white">
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Update Customer</a>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Place new order</a>
+			<hr class="bg-white mb-4">
+			<a class="btn btn-outline-dark text-white btn-sm btn-block" href="">Update Customer</a>
+			<a class="btn btn-outline-dark text-white  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Place new order</a>
 		</div>
 	</div>
-	<div class="col-md">
-		<div class="card card-body bg-dark">
+	<div class="col-md">	
+		<div class="card card-body main-card">
 			<h5 class="text-white">Contact Information</h5>
 			<hr class="bg-white">
 			<p class="text-white">Email: {{customer.email}} </p>
@@ -19,7 +24,7 @@
 		</div>
 	</div>
 	<div class="col-md">
-		<div class="card card-body bg-dark">
+		<div class="card card-body main-card">
 			<h5 class="text-white">Total Orders</h5>
 			<hr class="bg-white">
 			<h1 class="text-white" style="text-align: center;padding: 10px">{{order_count}}</h1>

@@ -55,6 +55,8 @@ def logoutUser(request):
 @admin_only
 def home(request):
 	orders = Order.objects.all()
+	orders_for_context = Order.objects.all()[:10]
+	orders_for_context = reversed(orders_for_context)
 	customers = Customer.objects.all()
 
 	total_customers = customers.count()
@@ -63,7 +65,7 @@ def home(request):
 	pending = orders.filter(status='Pending').count()
 
 	context = {'orders':orders,'customers':customers,'total_customers':total_customers,
-	'delivered':delivered,'total_orders':total_orders,'pending':pending}
+	'delivered':delivered,'total_orders':total_orders,'pending':pending,'orders_for_context':orders_for_context}
 
 	return render(request,'accounts/dashboard.html',context)
 
